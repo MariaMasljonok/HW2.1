@@ -23,23 +23,22 @@ class ViewController: UIViewController {
         
         workTrafficLightButton.layer.cornerRadius = 10
         
-        
+        stopLight.backgroundColor = UIColor.red.withAlphaComponent(0.3)
     }
     @IBAction func workTrafficLightButtonPressed() {
-//        UIViewPropertyAnimator(duration: 0.2, curve: .easeIn) {
-//            self.stopLight.alpha = 1
-//        }.startAnimation()
-        
+
         if stopLight.alpha != 1 {
+            stopLight.backgroundColor = .systemRed
             warningLight.alpha = 0.3
             goLight.alpha = 0.3
-            stopLight.backgroundColor = UIColor.red.withAlphaComponent(1)
             workTrafficLightButton.setTitle("NEXT", for: .normal)
         } else if warningLight.alpha != 1 {
-            stopLight.alpha = 0.3
             warningLight.backgroundColor = UIColor.yellow.withAlphaComponent(1)
-        } else if stopLight.alpha != 1 {
-            warningLight.alpha = 0.3
+            stopLight.alpha = 0
+            goLight.alpha = 0.3
+            workTrafficLightButton.setTitle("NEXT", for: .highlighted)
+        } else if stopLight.alpha == 0 {
+            warningLight.alpha = 0
             goLight.backgroundColor = UIColor.systemGreen.withAlphaComponent(1)
         }
     }
