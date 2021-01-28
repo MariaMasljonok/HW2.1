@@ -24,22 +24,28 @@ class ViewController: UIViewController {
         workTrafficLightButton.layer.cornerRadius = 10
         
         stopLight.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+        warningLight.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
+        goLight.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.3)
     }
     @IBAction func workTrafficLightButtonPressed() {
 
         if stopLight.alpha != 1 {
-            stopLight.backgroundColor = .systemRed
+            stopLight.backgroundColor = UIColor.systemRed.withAlphaComponent(1)
+            stopLight.alpha = 1
             warningLight.alpha = 0.3
             goLight.alpha = 0.3
             workTrafficLightButton.setTitle("NEXT", for: .normal)
         } else if warningLight.alpha != 1 {
             warningLight.backgroundColor = UIColor.yellow.withAlphaComponent(1)
-            stopLight.alpha = 0
+            warningLight.alpha = 1
+            stopLight.alpha = 0.3
             goLight.alpha = 0.3
-            workTrafficLightButton.setTitle("NEXT", for: .highlighted)
-        } else if stopLight.alpha == 0 {
-            warningLight.alpha = 0
-            goLight.backgroundColor = UIColor.systemGreen.withAlphaComponent(1)
+            workTrafficLightButton.setTitle("NEXT", for: .normal)
+        } else if stopLight.alpha != 1 {
+            warningLight.alpha = 0.3
+            goLight.alpha = 1
+            goLight.backgroundColor = UIColor.yellow.withAlphaComponent(1)
+            workTrafficLightButton.setTitle("NEXT", for: .normal)
         }
     }
     
